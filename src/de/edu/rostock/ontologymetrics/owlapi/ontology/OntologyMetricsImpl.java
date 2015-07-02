@@ -79,7 +79,12 @@ import de.edu.rostock.ontologymetrics.owlapi.ontology.metric.basemetric.schemakn
 import de.edu.rostock.ontologymetrics.owlapi.ontology.metric.basemetric.schemaknowledgebasemetric.knowledgebasemetric.CohesionMetric;
 import de.edu.rostock.ontologymetrics.owlapi.ontology.metric.basemetric.schemaknowledgebasemetric.knowledgebasemetric.InstanceCoverageMetric;
 import de.edu.rostock.ontologymetrics.owlapi.ontology.metric.basemetric.schemaknowledgebasemetric.knowledgebasemetric.TreeBalanceMetric;
+import de.edu.rostock.ontologymetrics.owlapi.ontology.metric.basemetric.schemaknowledgebasemetric.schemametric.AttributeClassRatio;
 import de.edu.rostock.ontologymetrics.owlapi.ontology.metric.basemetric.schemaknowledgebasemetric.schemametric.AttributeRichnessMetric;
+import de.edu.rostock.ontologymetrics.owlapi.ontology.metric.basemetric.schemaknowledgebasemetric.schemametric.AxiomClassRatioMetric;
+import de.edu.rostock.ontologymetrics.owlapi.ontology.metric.basemetric.schemaknowledgebasemetric.schemametric.ClassRelationsRatioMetric;
+import de.edu.rostock.ontologymetrics.owlapi.ontology.metric.basemetric.schemaknowledgebasemetric.schemametric.EquivalenceRatioMetric;
+import de.edu.rostock.ontologymetrics.owlapi.ontology.metric.basemetric.schemaknowledgebasemetric.schemametric.InverseRelationsRatioMetric;
 import de.edu.rostock.ontologymetrics.owlapi.ontology.metric.basemetric.schemaknowledgebasemetric.schemametric.SchemaInheritenceRichnessMetric;
 import de.edu.rostock.ontologymetrics.owlapi.ontology.metric.basemetric.schemaknowledgebasemetric.schemametric.SchemaRelationshipRichnessMetric;
 
@@ -464,13 +469,23 @@ public class OntologyMetricsImpl implements OntologyMetrics {
 	schemaMetric.add(getAttributeRichnessMetric());
 	schemaMetric.add(getSchemaInheritenceRichness());
 	schemaMetric.add(getSchemaRelatioshipRichness());
+	schemaMetric.add(getAttributeClassRatio());
+	//Added metric
+	schemaMetric.add(getEquivalenceRatio());
+	//Added metric
+	schemaMetric.add(getAxiomClassRatio());
+	//Added metric
+	schemaMetric.add(getInverseRelationRatio());
+	//Added metric
+	schemaMetric.add(getClassRelationsRatio());
+	//Added metric
 	return schemaMetric;
     }
 
     public OntologyMetric getAttributeRichnessMetric() {
 	return new AttributeRichnessMetric(ontology);
     }
-
+    
     public OntologyMetric getSchemaInheritenceRichness() {
 	return new SchemaInheritenceRichnessMetric(ontology);
     }
@@ -478,7 +493,32 @@ public class OntologyMetricsImpl implements OntologyMetrics {
     public OntologyMetric getSchemaRelatioshipRichness() {
 	return new SchemaRelationshipRichnessMetric(ontology);
     }
-
+       
+    public OntologyMetric getAttributeClassRatio() {
+    return new AttributeClassRatio(ontology);	
+	  }    	
+    //New
+    
+    public OntologyMetric getEquivalenceRatio() {
+    return new EquivalenceRatioMetric(ontology);	
+    }
+    //New
+    
+    public OntologyMetric getAxiomClassRatio() {
+    return new AxiomClassRatioMetric(ontology);	
+    }
+    //New
+    
+    public OntologyMetric getInverseRelationRatio() {
+    return new InverseRelationsRatioMetric(ontology);	
+    }
+    //New
+    
+    public OntologyMetric getClassRelationsRatio() {
+    return new ClassRelationsRatioMetric(ontology);	
+    }
+    //New
+    
     /*
      * knowledgebase metrics
      */

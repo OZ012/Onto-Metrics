@@ -178,7 +178,18 @@ public interface OntologyMetrics {
     public OntologyMetric getSchemaInheritenceRichness();
 
     public OntologyMetric getSchemaRelatioshipRichness();
-
+        
+    public OntologyMetric getAttributeClassRatio();
+    //Added Metric    
+    public OntologyMetric getEquivalenceRatio();
+    //Added Metric
+    public OntologyMetric getAxiomClassRatio();
+    //Added Metric
+    public OntologyMetric getInverseRelationRatio();
+    //Added Metric
+    public OntologyMetric getClassRelationsRatio();
+    //Added Metric
+    
     /*
      * knowledgebase metrics
      */

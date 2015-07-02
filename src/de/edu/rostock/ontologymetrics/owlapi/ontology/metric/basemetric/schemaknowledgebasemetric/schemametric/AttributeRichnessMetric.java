@@ -1,5 +1,6 @@
 package de.edu.rostock.ontologymetrics.owlapi.ontology.metric.basemetric.schemaknowledgebasemetric.schemametric;
 
+import org.semanticweb.owlapi.model.AxiomType;
 import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLDataProperty;
 import org.semanticweb.owlapi.model.OWLOntology;
@@ -13,6 +14,9 @@ import de.edu.rostock.ontologymetrics.owlapi.ontology.metric.basemetric.CountTot
  */
 public class AttributeRichnessMetric extends SchemaMetric {
 
+	int datapropertycount;
+	int objectpropertycount;
+	int attributecount;
     public AttributeRichnessMetric(OWLOntology pOntology) {
 	super(pOntology);
     }
@@ -25,19 +29,15 @@ public class AttributeRichnessMetric extends SchemaMetric {
 	float classes = new CountTotalClassesMetric(ontology).getValue();
 
 	for (OWLClass cls : ontology.getClassesInSignature(true)) {
-	    for (OWLDataProperty dataProperty : cls
-		    .getDataPropertiesInSignature()) {
-		if (dataProperty.isFunctional(ontology.getImports())) {
-		    attributes = attributes + 1;
-		}
-	    }
-	}
 
-	// avoid a division by zero
+	    	datapropertycount = ontology.getDataPropertiesInSignature(true).size() - 1;
+
+		}
+		
 	if (classes == 0) {
 	    return 0f;
 	} else {
-	    return attributes / classes;
+	    return datapropertycount / classes;
 	}
     }
 
